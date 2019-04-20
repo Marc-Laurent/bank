@@ -1,0 +1,18 @@
+package com.ynov.java.account.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.bank.account.model.Account;
+
+public interface AccountDAO extends JpaRepository<Account,Long> {
+    List<Account> findAllByUser(long user);
+
+    List<Account> findAllByDateCreateBetween(Date dateStart, Date dateEnd);
+    List<Account> findAllByDateUpdateAccountBetween(Date dateStart, Date dateEnd);
+
+    List<Account> findAllByUserAndDateCreateAccountBetween(long id ,Date dateStart, Date dateEnd);
+    List<Account> findAllBySenderAccountDateCreateAccountBetween(long id, Date dateStart, Date dateEnd);
+}
