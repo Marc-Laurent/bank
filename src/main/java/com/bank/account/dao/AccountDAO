@@ -9,6 +9,7 @@ import com.bank.account.model.Account;
 
 public interface AccountDAO extends JpaRepository<Account,Long> {
     List<Account> findAllByUser(long user);
+    List<Account> findById(long accountId);
 
     List<Account> findAllByDateCreateBetween(Date dateStart, Date dateEnd);
     List<Account> findAllByDateUpdateAccountBetween(Date dateStart, Date dateEnd);

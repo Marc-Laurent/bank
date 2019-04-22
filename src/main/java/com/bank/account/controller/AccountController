@@ -30,15 +30,37 @@ public class AccountController {
     @RequestMapping(value= "/account/list/user/{id}", method=RequestMethod.GET)
     public List<Account> listAccount() {
 
-        return accountRepository.findAll();
+        return accountRepository.findAllByUser(@PathVariable long id);
 
     }
 
-    @RequestMapping(value= "/account/list/user/{id}", method=RequestMethod.GET)
-        public List<Account> listAccount() {
-            System.out.println('==============');
-            return accountRepository.findAll();
+    @RequestMapping(value= "/account/{id}", method=RequestMethod.GET)
+        public Account getAccount(@PathVariable long id) {
 
+            return accountRepository.findById(id);
         }
+
+     @RequestMapping(value= "/account/{id}", method=RequestMethod.POST)
+             public Account getAccount(@RequestBody Account acc) {
+                Account a = accountRepository.saveAndFlush(acc));
+
+                 return a;
+             }
+
+
+    @RequestMapping(value= "/account/{id}", method=RequestMethod.PUT)
+        public Account setAccount(@RequestBody Account acc) {
+
+            Account a = accountRepository.saveAndFlush(acc));
+
+            return a;
+        }
+
+    @RequestMapping(value= "/account/user/{id}", method=RequestMethod.POST)
+            public Integer getValue() {
+                Account accountFounded = accountRepository.findById(@PathVariable long id);
+
+                return accountFounded.value;
+            }
 
 }
