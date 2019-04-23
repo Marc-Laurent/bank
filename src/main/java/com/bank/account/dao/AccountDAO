@@ -1,4 +1,4 @@
-package com.ynov.java.account.dao;
+package com.bank.account.dao;
 
 import java.util.Date;
 import java.util.List;
