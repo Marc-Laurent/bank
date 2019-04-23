@@ -1,11 +1,6 @@
 package com.bank.account.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,14 +30,15 @@ public class AccountController {
     }
 
     @RequestMapping(value= "/account/{id}", method=RequestMethod.GET)
-        public  List<Account>  getAccount(@PathVariable long id) {
+        public Account getAccount(@PathVariable long id) {
+        Account accountFounded = accountRepository.findById(id);
 
-            return accountRepository.findById(id);
+            return accountFounded;
         }
 
      @RequestMapping(value= "/account/{id}", method=RequestMethod.POST)
              public Account getAccount(@RequestBody Account acc) {
-                Account a = accountRepository.saveAndFlush(acc));
+                Account a = accountRepository.saveAndFlush(acc);
 
                  return a;
              }
@@ -56,11 +52,11 @@ public class AccountController {
             return a;
         }
 
-    @RequestMapping(value= "/account/user/{id}", method=RequestMethod.POST)
+    @RequestMapping(value= "/account/user/{id}", method=RequestMethod.GET)
             public Integer getValue(@PathVariable long id) {
-                //Account accountFounded = accountRepository.findById(id);
+                Account accountFounded = accountRepository.findById(id);
 
-                return accountFounded.value;
+                return accountFounded.ACC_VALEUR;
             }
 
 }
